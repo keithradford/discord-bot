@@ -13,14 +13,20 @@ bot = commands.Bot(command_prefix='!')
 async def on_ready():
     print(f'{bot.user.name} has connected to Discord!')
 
+@bot.command(name='cwl', help='Prints data related to the Clan War League.')
+async def get_cwl(ctx, *args):
+    c = clash.Clan()
+    message = c.cwl_info()
+    if len(args) == 1:
+        message = c.cwl_clan_info(args[0])
+    await ctx.send(message)
+
+
 @bot.command(name='member', help="Fetches stats for a user in the clan.")
 async def get_member(ctx, name):
-    try:
-        c = clash.Clan()
-        message = c.get_member(name)
-        await ctx.send(message)
-    except commands.errors.MissingRequiredArgument:
-        await ctx.send('Member name required: **!member <name>**')
+    c = clash.Clan()
+    message = c.get_member(name)
+    await ctx.send(message)
 
 @bot.command(name='roll_dice', help='Simulates rolling dice.')
 async def roll(ctx, number_of_dice:int, number_of_sides:int):
