@@ -67,11 +67,12 @@ class Clan:
 
     def cwl_clan_info(self, name):
         '''Returns info related to a clan in tbe Clan War League'''
+        name = name.lower()
         response = requests.get(self.url + 'currentwar/leaguegroup', headers=headers, proxies=proxyDict)
         data = response.json()
         to_ret = '```\n'
         for clan in data['clans']:
-            if clan['name'] == name:
+            if clan['name'].lower() == name:
                 to_ret += (name + '\n' + 'Level:' + str(clan['clanLevel']) + '\n\nMembers:')
                 for member in clan['members']:
                     to_ret += '\n -' + member['name'] + ': ' 'TH' + str(member['townHallLevel'])
@@ -81,10 +82,11 @@ class Clan:
 
     def get_member(self, name):
         '''Returns info related to a member in the clan'''
+        name = name.lower()
         response = requests.get(self.url + 'members', headers=headers, proxies=proxyDict)
         data = response.json()
         for user in data['items']:
-            if name == user['name']:
+            if name == user['name'].lower():
                 to_ret = user['name'] + '\n' + user['role'] + '\n' + 'Trophies: ' + str(user['trophies']) + ',  Donated: ' + str(user['donations']) + ', Received: ' + str(user['donationsReceived'])
                 return to_ret
         return 'User not found in clan.'
