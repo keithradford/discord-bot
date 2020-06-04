@@ -73,7 +73,7 @@ class Clan:
         to_ret = '```\n'
         for clan in data['clans']:
             if clan['name'].lower() == name:
-                to_ret += (name + '\n' + 'Level:' + str(clan['clanLevel']) + '\n\nMembers:')
+                to_ret += (clan['name'] + '\n' + 'Level:' + str(clan['clanLevel']) + '\n\nMembers:')
                 for member in clan['members']:
                     to_ret += '\n -' + member['name'] + ': ' 'TH' + str(member['townHallLevel'])
                 to_ret += '\n```'
