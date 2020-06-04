@@ -25,7 +25,7 @@ class Clan:
         response = requests.get(self.url + 'members', headers=headers, proxies=proxyDict)
         data = response.json()
         member = random.choice(data['items'])
-        return member['name']
+        return '```\n' + member['name'] + 'is moist.' + '\n```'
 
     def cwl_info(self):
         response = requests.get(self.url + 'currentwar/leaguegroup', headers=headers, proxies=proxyDict)
