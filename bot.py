@@ -21,6 +21,11 @@ async def get_cwl(ctx, *args):
         message = c.cwl_clan_info(args[0])
     await ctx.send(message)
 
+@bot.command(name='moist', help='Picks the moist member of the day.')
+async def get_cwl(ctx, *args):
+    c = clash.Clan()
+    message = c.get_random_member()
+    await ctx.send(message)
 
 @bot.command(name='member', help="Fetches stats for a user in the clan.")
 async def get_member(ctx, name):

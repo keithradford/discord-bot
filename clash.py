@@ -1,4 +1,5 @@
 import requests
+import random
 import os
 
 headers = {
@@ -18,7 +19,13 @@ class Clan:
         response = requests.get(self.url + 'members', headers=headers, proxies=proxyDict)
         data = response.json()
         for user in data['items']:
-            print(user['name'])
+           return user['name']
+
+    def get_random_member(self):
+        response = requests.get(self.url + 'members', headers=headers, proxies=proxyDict)
+        data = response.json()
+        member = random.sequence(data['items'])
+        return member['name']
 
     def cwl_info(self):
         response = requests.get(self.url + 'currentwar/leaguegroup', headers=headers, proxies=proxyDict)
