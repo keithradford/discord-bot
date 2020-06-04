@@ -18,6 +18,7 @@ class Clan:
     def cwl_info(self):
         response = requests.get(self.url + 'currentwar/leaguegroup', headers=headers)
         data = response.json()
+        print(data)
         if data['state'] == 'inWar':
             state = 'In War\n'
         to_ret = '```\n' + state + 'Season: ' + str(data['season']) + '\n\n' + 'Clans: '
