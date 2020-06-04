@@ -24,7 +24,7 @@ class Clan:
     def get_random_member(self):
         response = requests.get(self.url + 'members', headers=headers, proxies=proxyDict)
         data = response.json()
-        member = random.sequence(data['items'])
+        member = random.choice(data['items'])
         return member['name']
 
     def cwl_info(self):
