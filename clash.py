@@ -6,17 +6,22 @@ headers = {
     'authorization': 'Bearer ' + os.environ.get('CLASH_KEY')
 }
 
+proxyDict = {
+    "http"  : os.environ.get('FIXIE_URL', ''),
+    "https" : os.environ.get('FIXIE_URL', '')
+}
+
 class Clan:
     url = 'https://api.clashofclans.com/v1/clans/%23QOUUCYV2/'
 
     def get_members(self):
-        response = requests.get(self.url + 'members', headers=headers)
+        response = requests.get(self.url + 'members', headers=headers, proxies=proxyDict)
         data = response.json()
         for user in data['items']:
             print(user['name'])
 
     def cwl_info(self):
-        response = requests.get(self.url + 'currentwar/leaguegroup', headers=headers)
+        response = requests.get(self.url + 'currentwar/leaguegroup', headers=headers, proxies=proxyDict)
         data = response.json()
         print(data)
         if data['state'] == 'inWar':
@@ -29,7 +34,7 @@ class Clan:
         return to_ret
 
     def cwl_clan_info(self, name):
-        response = requests.get(self.url + 'currentwar/leaguegroup', headers=headers)
+        response = requests.get(self.url + 'currentwar/leaguegroup', headers=headers, proxies=proxyDict)
         data = response.json()
         to_ret = '```\n'
         for clan in data['clans']:
@@ -42,7 +47,7 @@ class Clan:
         return 'Clan not in CWL'
 
     def get_member(self, name):
-        response = requests.get(self.url + 'members', headers=headers)
+        response = requests.get(self.url + 'members', headers=headers, proxies=proxyDict)
         data = response.json()
         for user in data['items']:
             if name == user['name']:
