@@ -35,7 +35,7 @@ class Clan:
         if data['state'] == 'notInWar':
             to_ret = 'The DMND Life is not in a war right now.'
         else:
-            to_ret += '```\nThe DMND Life is in a war vs. ' + data['opponent']['name'] + '.\n\n' + 'The DMND Life: ' + str(data['clan']['stars']) + ' stars, ' + str(data['clan']['attacks']) + 'attacks\n' + data['opponent']['name'] + ': ' + str(data['opponent']['stars']) + ' stars, ' + str(data['opponent']['attacks']) + ' attacks\n```'
+            to_ret += '```\nThe DMND Life is in a war vs. ' + data['opponent']['name'] + '.\n\n' + 'The DMND Life: ' + str(data['clan']['stars']) + ' stars, ' + str(data['clan']['attacks']) + ' attacks\n' + data['opponent']['name'] + ': ' + str(data['opponent']['stars']) + ' stars, ' + str(data['opponent']['attacks']) + ' attacks\n```'
 
         return to_ret
 
