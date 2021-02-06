@@ -37,6 +37,10 @@ async def get_cwl(ctx):
 async def bob(ctx):
     await ctx.send('bob')
 
+@bot.command(name='dam', help='nico')
+async def dam(ctx):
+    await ctx.send(':nico:')
+
 @bot.command(name='member', help="Fetches stats for a user in the clan.")
 async def get_member(ctx, name):
     c = clash.Clan()
