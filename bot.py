@@ -39,7 +39,7 @@ async def bob(ctx):
 
 @bot.command(name='dam', help='nico')
 async def dam(ctx):
-    await ctx.send(':nico:')
+    await ctx.send('<:nico:717580375844454490>')
 
 @bot.command(name='member', help="Fetches stats for a user in the clan.")
 async def get_member(ctx, name):
