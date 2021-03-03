@@ -28,7 +28,7 @@ async def get_cwl(ctx, *args):
         message = c.cwl_info()
 
     embed = discord.Embed(title="Clan War League", description=message, color=0x004080, inline=False)
-    embed.set_image("https://static.wikia.nocookie.net/clashofclans/images/c/c0/War_League_Main_Banner.png/revision/latest/scale-to-width-down/340?cb=20181023145516")
+    embed.set_image(url = "https://static.wikia.nocookie.net/clashofclans/images/c/c0/War_League_Main_Banner.png/revision/latest/scale-to-width-down/340?cb=20181023145516")
     await ctx.send(embed=embed)
 
 @bot.command(name='moist', help='Picks the moist member of the day.')
