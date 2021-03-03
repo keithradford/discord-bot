@@ -21,11 +21,14 @@ async def on_ready():
 @bot.command(name='cwl', help='Prints data related to the Clan War League.')
 async def get_cwl(ctx, *args):
     c = clash.Clan()
-    message = c.cwl_info()
     s = ' '
     if len(args) >= 1:
         message = c.cwl_clan_info(s.join(args))
-    await ctx.send(message)
+    else:
+        message = c.cwl_info()
+
+    embed = discord.Embed(title="Clan War League", description=message)
+    await ctx.send(embed=embed)
 
 @bot.command(name='moist', help='Picks the moist member of the day.')
 async def get_cwl(ctx):
