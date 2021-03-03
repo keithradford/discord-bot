@@ -66,11 +66,9 @@ class Clan:
         data = response.json()
         if data['state'] == 'inWar':
             state = 'In War\n'
-        to_ret = '```\n' + state + 'Season: ' + str(data['season']) + '\n\n' + 'Clans: '
+        to_ret = state + 'Season: ' + str(data['season']) + '\n\n' + 'Clans: '
         for clan in data['clans']:
             to_ret += '\n -' + clan['name']
-
-        to_ret += '\n```'
 
         return to_ret
 
