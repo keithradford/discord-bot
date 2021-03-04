@@ -56,13 +56,13 @@ async def dam(ctx):
     await ctx.send('<:nico:717580375844454490>')
 
 @bot.command(name='member', help="Fetches stats for a user in the clan.")
-async def get_member(ctx, name):
+async def get_member(ctx, *args):
     c = clash.Clan()
     s = ' '
     if len(args) >= 1:
         data = c.get_member(s.join(args))
     else:
-        data = c.get_member(name)
+        data = c.get_member(args)
     embed = discord.Embed(title=data['name'], description=data['message'], color=0x9900d1, inline=False)
     embed.set_thumbnail(url = data['image'])
     await ctx.send(embed=embed)
