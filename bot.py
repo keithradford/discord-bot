@@ -18,6 +18,16 @@ bot = commands.Bot(command_prefix='!')
 async def on_ready():
     print(f'{bot.user.name} has connected to Discord!')
 
+@bot.command(name='clan', help='Fetches clan data.')
+async def get_cwl(ctx):
+    c = clash.Clan()
+    data = c.clan_info()
+    message = '**Level ' + str(data['level']) + ' | ' + data['league'] + ' | ' + str(data['members']) + ' members**\n\n' + data['desc']
+    embed = discord.Embed(title=data['name'], description=message, color=0xd12600, inline=False)
+    embed.set_thumbnail(url = data['image'])
+
+    await ctx.send(embed=embed)
+
 @bot.command(name='cwl', help='Prints data related to the Clan War League.')
 async def get_cwl(ctx, *args):
     c = clash.Clan()
@@ -48,8 +58,10 @@ async def dam(ctx):
 @bot.command(name='member', help="Fetches stats for a user in the clan.")
 async def get_member(ctx, name):
     c = clash.Clan()
-    message = c.get_member(name)
-    await ctx.send(message)
+    data = c.get_member(name)
+    embed = discord.Embed(title=data['name'], description=data['message'], color=0x9900d1, inline=False)
+    embed.set_thumbnail(url = data['image'])
+    await ctx.send(embed=embed)
 
 @bot.command(name='war', help="Fetches the clan's war state.")
 async def get_war(ctx):
