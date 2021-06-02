@@ -8,6 +8,6 @@ ez-setup==0.9
 idna==2.9
 multidict==4.7.6
 requests==2.23.0
-urllib3==1.25.9
+urllib3==1.26.5
 websockets==8.1
 yarl==1.4.2
